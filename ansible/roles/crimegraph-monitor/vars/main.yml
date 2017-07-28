@@ -1,0 +1,24 @@
+---
+# file: crimegraph-monitor/vars/main.yml
+crimegraph_monitor_command: "crimegraph-monitor"
+crimegraph_monitor_home: "/opt/crimegraph-monitor"
+crimegraph_monitor_jar_path: "/vagrant/target/crimegraph-monitor-1.0-jar-with-dependencies.jar"
+
+# datasets
+crimegraph_monitor_datasets: "{{ crimegraph_monitor_home }}/datasets"
+crimegraph_monitor_results: "{{ crimegraph_monitor_home }}/results"
+crimegraph_monitor_datasets_vagrant: "/vagrant/data/datasets"
+
+# kafka
+crimegraph_monitor_kafka_broker_address: "ec2-54-229-59-109.eu-west-1.compute.amazonaws.com"
+crimegraph_monitor_kafka_broker_port: "9092"
+crimegraph_monitor_kafka_broker_topic: "main-topic"
+
+# neo4j
+crimegraph_monitor_neo4j_master_address: "ec2-54-229-244-48.eu-west-1.compute.amazonaws.com"
+crimegraph_monitor_neo4j_master_port: "7687"
+crimegraph_monitor_neo4j_master_username: "neo4j"
+crimegraph_monitor_neo4j_master_password: "password"
+
+# scripts
+crimegraph_monitor_wait_between_commands: 10

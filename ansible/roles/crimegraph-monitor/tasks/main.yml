@@ -1,0 +1,35 @@
+---
+# file: crimegraph-monitor/tasks/main.yml
+- name: create directories for app executor
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 755
+  with_items:
+  - "{{ crimegraph_monitor_home }}"
+  - "{{ crimegraph_monitor_datasets }}"
+  - "{{ crimegraph_monitor_results }}"
+
+- name: create app executor
+  template:
+    src: exec.sh
+    dest: "{{ crimegraph_monitor_home }}/exec.sh"
+    mode: 755
+
+- name: update alternatives for app executor
+  alternatives:
+    name: "{{ crimegraph_monitor_command }}"
+    path: "{{ crimegraph_monitor_home }}/exec.sh"
+    link: "/usr/bin/{{ crimegraph_monitor_command }}"
+    priority: 100
+
+- name: create scripts for evaluation
+  template:
+    src: "{{ item }}"
+    dest: "{{ crimegraph_monitor_home }}/{{ item }}"
+    mode: 755
+  with_items:
+  - "check.sh"
+  - "datagen.sh"
+  - "publish.sh"
+  - "evaluate.sh"

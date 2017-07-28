@@ -1,0 +1,9 @@
+---
+# file: inventory.yaml
+- name: "java"
+  instances:
+    - name: "crimegraph_monitor"
+      type: "t2.large" # 16gb, EBS, 0.202$/h
+      ami: "ami-3291be54"
+      user: "admin"
+      security_groups: ["default"]
